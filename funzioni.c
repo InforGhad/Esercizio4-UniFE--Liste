@@ -34,35 +34,23 @@ int member(int e, lista L) {
 }
 
 lista cons_tail(int e, lista l) {
-  lista prec, aux;
-  lista patt = l;
-  aux = (lista)malloc(sizeof(item));
-  // printf("aux=%d\n", aux);
-  // ALLOCA NODO
-  aux->elemento = e;
-  aux->next = NULL;
-  if (l == NULL) {
-    // printf("Inserisco in lista vuota\n");
-    return aux; // INSERISCE IN LISTA VUOTA
+  lista tmp = NULL;
+  for (tmp = l; tmp->next != NULL; tmp = tmp->next)
+    ; // Cerco ultimo elemento
+  // Trovato l'ultimo elemento, creo un nuovo nodo
+  tmp->next = (lista)malloc(sizeof(item));
+  //|->Assegno all'ultimo valore(che prima era NULL), un indirizzo, del nuovo
+  // valore
 
-  } else {
-    while (patt != NULL) // NON FINE LISTA
+  tmp->next->elemento = e; // Assegno al nuovo indirizzo, il valore scelto
+  tmp->next->next =
+      NULL; // Assegno al nuovo indirizzo NULL, ovvero, la nuova head.
+  return l;
+}
 
-    {
-      prec = patt;
-      // printf("\n----\n");
-      // printf("***prec=%d\n", prec);
-      // printf("*patt value=%d ", patt->elemento);
-
-      patt = patt->next;
-      // printf("**patt=%d\n", patt);
-      // printf("\n----\n");
-    }
-    // printf("\n");
-    prec->next = aux; // AGGIUNGE IN FONDO
-    // printf("Assegno a prec, aux\n");
-    // printf("*!prec next=%d\n", prec->next);
-    // printf("*!prec value=%d\n", prec->next);
-    return l; // RESTITUISCE RADICE l
-  }
+lista empty_list(int e, lista l) {
+  l = (lista)malloc(sizeof(item));
+  l->elemento = e;
+  l->next = NULL;
+  return l;
 }

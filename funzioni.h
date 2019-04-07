@@ -14,3 +14,5 @@ lista stampa(lista L);
 int member(int e, lista L);
 
 lista cons_tail(int e, lista l);
+
+lista empty_list(int e, lista l);
