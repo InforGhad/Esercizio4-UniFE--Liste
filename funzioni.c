@@ -9,3 +9,12 @@ lista inst(int scelta, lista miaL){
   t->next=miaL;
   return t;
 }
+
+lista stampa(lista L){
+  if(L==NULL) return L;
+  else{
+    printf("%d, ", L->elemento);
+    L=L->next;
+    return stampa(L);
+  }
+}

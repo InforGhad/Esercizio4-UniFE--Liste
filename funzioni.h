@@ -8,3 +8,5 @@ typedef item *lista;
 typedef enum{FALSE, TRUE}boolean;
 
 lista inst(int el, lista root);
+
+lista stampa(lista L);

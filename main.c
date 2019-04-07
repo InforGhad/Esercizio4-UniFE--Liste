@@ -17,10 +17,8 @@ int main(int argc, char const *argv[]) {
   }while(!out);
 
   printf("STAMPA ELEMENTI\n");
+  stampa(mial1);
 
-  while (mial1!=NULL) {
-    printf("%d, ", mial1->elemento);
-    mial1=mial1->next;
-  }
+
   return 0;
 }
