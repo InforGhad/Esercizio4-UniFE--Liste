@@ -44,7 +44,7 @@ lista cons_tail(int e, lista l) {
 
   tmp->next->elemento = e; // Assegno al nuovo indirizzo, il valore scelto
   tmp->next->next =
-      NULL; // Assegno al nuovo indirizzo NULL, ovvero, la nuova head.
+      NULL; // Assegno al nuovo indirizzo NULL, ovvero, la nuova coda.
   return l;
 }
 
