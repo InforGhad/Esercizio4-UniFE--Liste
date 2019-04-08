@@ -16,3 +16,9 @@ int member(int e, lista L);
 lista cons_tail(int e, lista l);
 
 lista empty_list(int e, lista l);
+
+lista sublist(int n, lista l);
+
+int lslenght(lista mial1);
+
+int sumlist(lista mial1);

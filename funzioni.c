@@ -54,3 +54,35 @@ lista empty_list(int e, lista l) {
   l->next = NULL;
   return l;
 }
+
+lista sublist(int n, lista l) {
+  int i = 0;
+  boolean find = FALSE;
+  while (!find) {
+    l = l->next;
+    printf("\n**i= %i**\n", i);
+    if (i == n) {
+      stampa(l);
+      find = TRUE;
+    }
+    i++;
+  }
+  return l;
+}
+
+int lslenght(lista l) {
+  int i;
+  for (i = 0; l != NULL; l = l->next, i++)
+    ;
+  return i;
+}
+
+int sumlist(lista l) {
+  int tot = 0;
+  while (l != NULL) {
+    tot += l->elemento;
+    printf("tot=%d\t", tot);
+    l = l->next;
+  }
+  return tot;
+}
