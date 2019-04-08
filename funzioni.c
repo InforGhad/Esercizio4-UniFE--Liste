@@ -2,12 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Inserimento in testa
 lista inst(int scelta, lista miaL) {
   lista t;
-  t = (lista)malloc(sizeof(item));
-  t->elemento = scelta;
-  t->next = miaL;
-  return t;
+  t = (lista)malloc(sizeof(item)); // Definisco nuovo nodo
+  t->elemento = scelta;            // Inserisco l'elemento
+  t->next = miaL;                  // Punto al prossimo nodo.
+  return t;                        // Ritorno l'ultimo nodo.
 }
 
 lista stampa(lista L) {
@@ -20,14 +21,15 @@ lista stampa(lista L) {
   }
 }
 
-int member(int e, lista L) {
-  if (L == NULL)
-    return -1;
+int member(int e, lista L) { // Ricerca
+  if (L == NULL) // Se arrivi a questo punto, vuol dire che l'elemento non è
+                 // stato TROVATO
+    return -1;   // l'output -1, indica un esito negativo
   else {
     if (L->elemento == e)
-      return 1;
+      return 1; // l'output 1, indica un esito POSITIVO, yeah!
     else {
-      L = L->next;
+      L = L->next; // Punta al prossimo nodo.
       return member(e, L);
     }
   }
@@ -48,6 +50,7 @@ lista cons_tail(int e, lista l) {
   return l;
 }
 
+// Crea una lista vuota, nel momento in cui non ci sono nodi
 lista empty_list(int e, lista l) {
   l = (lista)malloc(sizeof(item));
   l->elemento = e;
@@ -58,12 +61,13 @@ lista empty_list(int e, lista l) {
 lista sublist(int n, lista l) {
   int i = 0;
   boolean find = FALSE;
-  while (!find) {
+  while (!find) { // FInchè non raggiungi l'elemento da cui iniziare a stampare,
+                  // continua a girare
     l = l->next;
-    printf("\n**i= %i**\n", i);
+    // printf("\n**i= %i**\n", i);log
     if (i == n) {
       stampa(l);
-      find = TRUE;
+      find = TRUE; // TROVATO YEAH! Ora posso uscire.
     }
     i++;
   }
@@ -80,9 +84,9 @@ int lslenght(lista l) {
 int sumlist(lista l) {
   int tot = 0;
   while (l != NULL) {
-    tot += l->elemento;
-    printf("tot=%d\t", tot);
-    l = l->next;
+    tot += l->elemento; // Somma l'elemento
+    // printf("tot=%d\t", tot);log
+    l = l->next; // Punta al prossimo nodo
   }
   return tot;
 }
