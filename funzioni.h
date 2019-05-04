@@ -1,3 +1,5 @@
+#define recursive
+
 typedef struct mialista {
   int elemento;
   struct mialista *next;

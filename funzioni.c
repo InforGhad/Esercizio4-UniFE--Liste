@@ -2,40 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifndef recursive // Funzioni iterative
 // Inserimento in testa
 lista inst(int scelta, lista miaL) {
-  lista t;
-  t = (lista)malloc(sizeof(item)); // Definisco nuovo nodo
-  t->elemento = scelta;            // Inserisco l'elemento
-  t->next = miaL;                  // Punto al prossimo nodo.
-  return t;                        // Ritorno l'ultimo nodo.
-}
+  lista t = NULL;
+  if (scelta != 0) {
 
-lista stampa(lista L) {
-  if (L == NULL)
-    return L;
-  else {
-    printf("%d, ", L->elemento);
-    L = L->next;
-    return stampa(L);
+    t = (lista)malloc(sizeof(item)); // Definisco nuovo nodo
+    t->elemento = scelta;            // Inserisco l'elemento
+    t->next = miaL;                  // Punto al prossimo nodo.
+    return t;                        // Ritorno l'ultimo nodo.
   }
+  return t;
 }
 
-int member(int e, lista L) { // Ricerca
-  if (L == NULL) // Se arrivi a questo punto, vuol dire che l'elemento non è
-                 // stato TROVATO
-    return -1;   // l'output -1, indica un esito negativo
-  else {
-    if (L->elemento == e)
-      return 1; // l'output 1, indica un esito POSITIVO, yeah!
-    else {
-      L = L->next; // Punta al prossimo nodo.
-      return member(e, L);
-    }
-  }
-}
-
+// Inserimento in coda
 lista cons_tail(int e, lista l) {
+
   lista tmp = NULL;
   for (tmp = l; tmp->next != NULL; tmp = tmp->next)
     ; // Cerco ultimo elemento
@@ -58,7 +41,36 @@ lista empty_list(int e, lista l) {
   return l;
 }
 
+/*--Funzioni da rendere ricorsive--*/
+
+// Stampa lista, Ricorsiva? Si.
+lista stampa(lista L) {
+  while (L != NULL) {
+    printf("%d, ", L->elemento);
+    L = L->next;
+  }
+  printf("\n");
+  return L;
+}
+
+// Ricerca elemento, Ricorsiva? In corso
+int member(int e, lista L) { // Ricerca
+  if (L == NULL) // Se arrivi a questo punto, vuol dire che l'elemento non è
+                 // stato TROVATO
+    return -1;   // l'output -1, indica un esito negativo
+  else {
+    if (L->elemento == e)
+      return 1; // l'output 1, indica un esito POSITIVO, yeah!
+    else {
+      L = L->next; // Punta al prossimo nodo.
+      return member(e, L);
+    }
+  }
+}
+
+// Stampa di una lista, partendo da un elemento, Ricorsiva?
 lista sublist(int n, lista l) {
+
   int i = 0;
   boolean find = FALSE;
   while (!find) { // FInchè non raggiungi l'elemento da cui iniziare a stampare,
@@ -74,6 +86,7 @@ lista sublist(int n, lista l) {
   return l;
 }
 
+// Lunghezza di una lista, Ricorsiva?
 int lslenght(lista l) {
   int i;
   for (i = 0; l != NULL; l = l->next, i++)
@@ -81,6 +94,7 @@ int lslenght(lista l) {
   return i;
 }
 
+// Somma di tutti gli elementi nella lista, Ricorsiva?
 int sumlist(lista l) {
   int tot = 0;
   while (l != NULL) {
@@ -90,3 +104,19 @@ int sumlist(lista l) {
   }
   return tot;
 }
+
+#endif // Funzioni iterative
+
+#ifdef recursive // Funzioni Ricorsive
+// Stampa Ricorsiva
+lista stampa(lista L) {
+  if (L == NULL)
+    return L;
+  else {
+    printf("%d, ", L->elemento);
+    L = L->next;
+    return stampa(L);
+  }
+}
+
+#endif // Funzioni Ricorsive

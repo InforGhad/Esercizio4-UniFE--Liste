@@ -1,3 +1,5 @@
+
+
 #include "funzioni.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,11 +13,12 @@ int main(int argc, char const *argv[]) {
     printf("Inserisci valore, 0 per uscire:\n");
     scanf("%d", &scelta);
 
-    mial2 = inst(scelta, mial2);
     // primo elemento
     if (scelta == 0)
       out = TRUE;
+
     else {
+      mial2 = inst(scelta, mial2);
 
       if (mial1 == NULL) { // Assegno primo elemento in una lista
         mial1 = empty_list(scelta, mial1);
